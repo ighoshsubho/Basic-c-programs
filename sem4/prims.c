@@ -25,12 +25,14 @@ void InitalizeMSTPrims(int *pred, int *PrQueue, int rootVertex, int vertexCount)
     PrQueue[rootVertex] = 0;
 }
 
-int ExtractMin(int vertexCount, int *PrQueue){
-    int i, min = 0;
-    for(i=1;i<vertexCount;i++)
-        min = i;
-    PrQueue[min] = INT_MIN;
-    return min;
+int extractMin(int numNodes){
+    int i, smallest = 0;
+    for(i=0;i<numNodes;i++){
+        if(PrQueue[i]!=INT_MIN && PrQueue[i]<PrQueue[smallest])
+            smallest=i;
+    }
+    PrQueue[smallest] = INT_MIN;
+    return smallest;
 }
 
 void displayList(node *head)

@@ -151,62 +151,7 @@ void dijkstra(node **graph, int numNodes, int source, int *distance, int *predec
         }
         size--;
     }
-    // Node *sourceNode = (Node *)malloc(sizeof(Node));
-    // sourceNode->vertex = source;
-    // sourceNode->weight = 0;
-    // enqueue(pq, sourceNode);
-    // while (pq->size > 0)
-    // {
-
-    //     Node *currNode = extractMin(pq);
-    //     int u = currNode->vertex;
-    //     for (Node *adjNode = graph[u]; adjNode != NULL; adjNode = adjNode->next)
-    //     {
-    //         int v = adjNode->vertex;
-    //         int w = adjNode->weight;
-    //         if (distance[u] != INT_MAX && distance[u] + w < distance[v])
-    //         {
-    //             distance[v] = distance[u] + w;
-    //             predecessor[v] = u;
-    //             Node *updatedNode = (Node *)malloc(sizeof(Node));
-    //             updatedNode->vertex = v;
-    //             updatedNode->weight = distance[v];
-    //             enqueue(pq, updatedNode);
-    //         }
-    //     }
-    // }
 }
-
-// void dijkstra(Node **graph, int numNodes, int source, int *distance, int *predecessor)
-// {
-
-//     PriorityQueue *pq = createPriorityQueue(numNodes);
-//     Initialize_Single_Source_Shortest_Path(source, numNodes, distance, predecessor);
-//     Node *sourceNode = (Node *)malloc(sizeof(Node));
-//     sourceNode->vertex = source;
-//     sourceNode->weight = 0;
-//     enqueue(pq, sourceNode);
-//     while (pq->size > 0)
-//     {
-
-//         Node *currNode = extractMin(pq);
-//         int u = currNode->vertex;
-//         for (Node *adjNode = graph[u]; adjNode != NULL; adjNode = adjNode->next)
-//         {
-//             int v = adjNode->vertex;
-//             int w = adjNode->weight;
-//             if (distance[u] != INT_MAX && distance[u] + w < distance[v])
-//             {
-//                 distance[v] = distance[u] + w;
-//                 predecessor[v] = u;
-//                 Node *updatedNode = (Node *)malloc(sizeof(Node));
-//                 updatedNode->vertex = v;
-//                 updatedNode->weight = distance[v];
-//                 enqueue(pq, updatedNode);
-//             }
-//         }
-//     }
-// }
 
 void Display_Path(int predecessor[], int sourceVertex, int currentVertex)
 {
@@ -252,7 +197,7 @@ int main()
     int *predecessor = (int *)malloc(n * sizeof(int));
     int *distance = (int *)malloc(n * sizeof(int));
     PrQueue = (int *)(malloc(n*sizeof(int)));
-    createAdjacencyList(n, 1);
+    graph = createAdjacencyList(n, 1);
     fclose(fptr);
     dijkstra(graph, n, 0, distance, predecessor);
     Display_Path_and_distance(0, n, distance, predecessor);
