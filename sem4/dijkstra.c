@@ -38,7 +38,7 @@ node *insertAtBeg(node *head, int vertex, int wt)
     newnode->weight = wt;
     newnode->vertex = vertex;
 
-    if (!head)
+    if (head==NULL)
     {
         head = newnode;
         newnode->next = NULL;
@@ -140,13 +140,15 @@ void dijkstra(node **graph, int numNodes, int source, int *distance, int *predec
         smallest=extractMin(numNodes);
         for(i=0;i<numNodes;i++){
             node *ptr = graph[i];
-            ptr=ptr->next;
-            while(ptr!=NULL){
-                if(distance[smallest]!=INT_MAX && distance[ptr->vertex]>distance[smallest]+ptr->weight){
-                    distance[ptr->vertex] = distance[smallest]+ptr->weight;
-                    predecessor[ptr->vertex] = smallest;
+            if(ptr){
+                ptr=ptr->next;
+                while(ptr!=NULL){
+                        if(distance[smallest]!=INT_MAX && distance[ptr->vertex]>distance[smallest]+ptr->weight){
+                        distance[ptr->vertex] = distance[smallest]+ptr->weight;
+                        predecessor[ptr->vertex] = smallest;
+                        }
+                        ptr = ptr->next;
                 }
-                ptr = ptr->next;
             }
         }
         size--;
